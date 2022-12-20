@@ -1,3 +1,8 @@
+/***************************************************
+* @filename  App.java
+* @date      2022.12.20
+* @comment   객체를 생성하여 CRUD를 실행하는 main class 
+****************************************************/
 package db_java;
 
 import java.util.ArrayList;
@@ -10,7 +15,7 @@ public class App {
 
 		Dao dao = new Dao();
 		
-		
+		//객체 생성
 		Dto dto1 = new Dto();
 		dto1.setIndex(3333);
 		dto1.setLib_name("마크애니 도서관");
@@ -26,6 +31,7 @@ public class App {
 		dto1.setLat("37.50230583");
 		dto1.setLongitude("127.1739098");
 		
+		//insert
 		boolean isSuccess = dao.insert(dto1);
 		if(isSuccess) {
 			System.out.println("삽입 성공");
@@ -39,6 +45,7 @@ public class App {
 		dto2.setPhone("02-222-2222");
 		dto2.setHoliday("매주 화요일 및 법정공휴일");
 		
+		//update
 		boolean isSuccess2 = dao.update(dto2);
 		if(isSuccess2) {
 			System.out.println("갱신 성공");
@@ -51,6 +58,7 @@ public class App {
 		Dto dto3 = new Dto();
 		dto3.setIndex(48);
 		
+		//delete
 		boolean isSuccess3 = dao.delete(dto3);
 		if(isSuccess3) {
 			System.out.println("삭제 성공");
@@ -59,7 +67,7 @@ public class App {
 		}
 		
 
-		
+		//select
 		List<Dto> list = new ArrayList<>();
 		list = dao.getList();
 		if(list.size()==0) {
