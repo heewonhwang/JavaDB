@@ -1,3 +1,8 @@
+/*******************************************************************************************
+* @filename  Dao.java
+* @date      2022.12.20
+* @comment   실제 데이터베이스에 접근하는 객체 클래스(insert, update, delete, select 메서드 구현) 
+********************************************************************************************/
 package db_java;
 
 import java.sql.Connection;
@@ -16,13 +21,13 @@ public class Dao {
 		try {
 			
 			conn = new Driver().getConn();
-			
+			//실행할 insert
 			String sql = "INSERT INTO lib_eng"
 					+ " (num, lib_name, code, ad_name, address, phone, url, time, holiday, devision, dev_name, lat, longitude)"
 					+ " VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?)";
 		
 			pstmt = conn.prepareStatement(sql);
-			
+			//sql문 values 값 바인딩하기
 			pstmt.setInt(1, dto.getIndex());
 			pstmt.setString(2, dto.getLib_name());
 			pstmt.setString(3, dto.getCode());
@@ -66,7 +71,7 @@ public class Dao {
 		try {
 			
 			conn = new Driver().getConn();
-			
+			//실행할 update문 작성
 			String sql = "UPDATE lib_eng"
 					+" SET phone=?, holiday=?"
 					+" WHERE num=?";
@@ -106,7 +111,7 @@ public class Dao {
 		try {
 			
 			conn = new Driver().getConn();
-			
+			//실행할 delete
 			String sql = "DELETE FROM lib_eng"
 					+" WHERE num=?";
 			
@@ -145,7 +150,7 @@ public class Dao {
 		try {
 		
 			conn = new Driver().getConn();
-			
+			//실행할 select문 작성
 			String sql = "SELECT lib_name, time, holiday"
 					+" FROM lib_eng";
 			
@@ -158,6 +163,7 @@ public class Dao {
 				dto.setLib_name(rs.getString("lib_name"));
 				dto.setTime(rs.getString("time"));
 				dto.setHoliday(rs.getString("holiday"));
+				//list에 담기
 				list.add(dto);
 			}
 		} catch (Exception e) {
