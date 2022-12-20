@@ -1,3 +1,8 @@
+/*******************************************************************************************
+* @filename  Driver.java
+* @date      2022.12.20
+* @comment   데이터베이스(mariaDB)에 접속해주는 드라이버 클래스
+********************************************************************************************/
 package db_java;
 
 import java.sql.Connection;
@@ -15,7 +20,6 @@ public class Driver {
 	         String url="jdbc:mysql://127.0.0.1/db01";
 	         //DB 연결 객체의 참조값 얻어와서 필드에 담기
 	         conn=DriverManager.getConnection(url, "root", "1234");
-	         //예외가 발생하지 않고 여기까지 실행순서가 진행이되면 접속 성공이다.
 	         System.out.println("Oracle DB 접속 성공!");
 	         
 	      }catch(Exception e){
